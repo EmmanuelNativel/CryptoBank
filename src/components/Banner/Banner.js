@@ -1,0 +1,56 @@
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
+import background from "./banner.jpg";
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    flexGrow: 1,
+    position: "relative",
+    overflow: "hidden",
+    height: "90vh",
+    backgroundImage: `url(${background})`,
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "left center",
+    backgroundSize: "cover"
+  },
+  container: {
+    height: "inherit",
+    backgroundColor: "rgba(0,0,0,0.4)"
+  },
+  asideBox: {
+    height: "inherit",
+    width: "40%",
+    float: "right",
+    color: "white",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  asideText: {
+    // border: "1px solid white",
+    textAlign: "left",
+    marginBottom: "20%"
+  },
+}));
+
+export default function Banner() {
+  const classes = useStyles();
+
+  return (
+    <div className={classes.root}>
+      <div className={classes.container}>
+        <div className={classes.asideBox}>
+          <section className={classes.asideText}>
+            <Typography variant="h2" component="h2" color='secondary'>
+              Online, Symmetric
+            </Typography>
+            <Typography variant="h1" component="h1">
+              Cryptography algorithms
+            </Typography>
+          </section>
+        </div>
+      </div>
+    </div>
+  );
+}
