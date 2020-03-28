@@ -8,7 +8,7 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
     position: "relative",
     overflow: "hidden",
-    height: "90vh",
+    height: "91vh",
     backgroundImage: `url(${background})`,
     backgroundRepeat: "no-repeat",
     backgroundPosition: "left center",
@@ -28,9 +28,8 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center"
   },
   asideText: {
-    // border: "1px solid white",
     textAlign: "left",
-    marginBottom: "20%"
+    marginBottom: "20%",
   },
 }));
 

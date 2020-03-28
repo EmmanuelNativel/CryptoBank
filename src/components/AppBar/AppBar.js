@@ -15,7 +15,7 @@ const useStyles = makeStyles(theme => ({
     marginRight: theme.spacing(2),
   },
   title: {
-    color: theme.palette.common.white,
+    color: theme.palette.secondary.dark,
     flexGrow: 1,
     display: 'none',
     [theme.breakpoints.up('sm')]: {
@@ -68,7 +68,7 @@ export default function SearchAppBar() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="static" color="primary">
         <Toolbar>
           <IconButton
             edge="start"
