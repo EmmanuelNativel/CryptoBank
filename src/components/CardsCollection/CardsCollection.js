@@ -18,7 +18,7 @@ export default function CardsCollection() {
     <div className={classes.root}>
       <Grid container spacing={5}>
         {data.map(e => (
-          <Grid item xs={12} sm={6} key={e.name}>
+          <Grid item xs={12} sm={6} key={e.id}>
             <CardItem data={e}/>
           </Grid>
         ))}

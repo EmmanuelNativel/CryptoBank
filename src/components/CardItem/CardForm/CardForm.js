@@ -15,12 +15,12 @@ export default function CardForm({ keyValue, text, isDecrypting, onKeyChange, on
   const classes = useStyles();
   
   return (
-    <form onSubmit={""} className={classes.root}>
+    <form className={classes.root}>
       <Grid container direction="column" spacing={1}>
         <Grid item className={classes.centered}>
           <FormLabel style={{ color: "black" }}>Encrypt</FormLabel>
           <Switch
-            color="disabled"
+            color="default"
             checked={isDecrypting}
             onChange={onIsDecryptingChange}
           />

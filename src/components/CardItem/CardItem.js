@@ -4,14 +4,13 @@ import {
   Card,
   CardContent,
   CardActions,
-  Button,
   Chip,
   CardHeader,
   Grid
 } from "@material-ui/core";
 import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
-import CardForm from "./CardForm/CardForm";
 import CardResultPanel from "./CardResultPanel/CardResultPanel";
+import AlgoManager from "./AlgoManager";
 
 const useStyles = makeStyles(theme => ({
   properties: {
@@ -24,13 +23,6 @@ const useStyles = makeStyles(theme => ({
   },
   primaryLightColor: {
     color: theme.palette.primary.light
-  },
-  blueButton: {
-    backgroundColor: theme.palette.primary.light,
-    color: "white",
-    "&:hover": {
-      backgroundColor: theme.palette.primary.contrastText
-    }
   }
 }));
 
@@ -45,6 +37,7 @@ export default function CardItem({ data }) {
   const [key, setKey] = useState("");
   const [isDecrypting, setIsDecrypting] = useState(false);
   const [text, setText] = useState("");
+  const [result, setResult] = useState("");
 
   const handleKeyChange = e => {
     setKey(e.target.value);
@@ -55,6 +48,10 @@ export default function CardItem({ data }) {
   const handleIsDecryptingChange = e => {
     setIsDecrypting(e.target.checked);
   };
+  const handleResult = val => {
+    console.log("HANDLE RESULT", val);
+    setResult(val);
+  }
 
   return (
     <Card className={classes.card}>
@@ -63,28 +60,35 @@ export default function CardItem({ data }) {
         subheader={data.subtitle}
         titleTypographyProps={titleTypoProps}
       />
-      <CardResultPanel text={text} />
+      <CardResultPanel text={text} result={result}/>
       <CardActions className={classes.properties}>
         <Grid container spacing={1}>
-        {data.properties.map(p => (
-          <Grid item>
-          <Chip
-            icon={
-              <FiberManualRecordIcon
-                fontSize="small"
-                className={classes.primaryLightColor}
+          {data.properties.map(p => (
+            <Grid item key={data.name + p}>
+              <Chip
+                icon={
+                  <FiberManualRecordIcon
+                    fontSize="small"
+                    className={classes.primaryLightColor}
+                  />
+                }
+                size="medium"
+                label={p}
               />
-            }
-            size="medium"
-            label={p}
-            key={data.name + p}
-          />
-          </Grid>
-        ))}
+            </Grid>
+          ))}
         </Grid>
       </CardActions>
       <CardContent>
+        {/*
+        Mettre un controlleur qui attribura le bon composant (formulaire en fonction de l'id). 
+        --> Un switch qui renvoi un composant avec passage des props. 
+        --> Le Cryptage/Décryptage se fera dans le composant formulaire directement, 
+        ce qui va permettre de gérer le type des données entrées et de personnaliser le 
+        formulaire en fonction de l'algorithme traité.  
+       
         <CardForm
+          data={data}
           keyValue={key}
           text={text}
           isDecrypting={isDecrypting}
@@ -92,22 +96,18 @@ export default function CardItem({ data }) {
           onTextChange={handleTextChange}
           onIsDecryptingChange={handleIsDecryptingChange}
         />
+         */}
+        <AlgoManager
+          data={data}
+          keyValue={key}
+          text={text}
+          isDecrypting={isDecrypting}
+          onKeyChange={handleKeyChange}
+          onTextChange={handleTextChange}
+          onIsDecryptingChange={handleIsDecryptingChange}
+          onResult={handleResult}
+        />
       </CardContent>
-      <CardActions>
-        <Button size="small" color="secondary" variant="contained">
-          {isDecrypting ? "Decrypt" : "Encrypt"}
-        </Button>
-        <Button
-          size="small"
-          color="secondary"
-          variant="contained"
-          className={classes.blueButton}
-          component="a"
-          href={data.link}
-        >
-          Learn more
-        </Button>
-      </CardActions>
     </Card>
   );
 }
