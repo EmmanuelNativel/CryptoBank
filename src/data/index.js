@@ -1,33 +1,34 @@
 const data = [
-    {
-        id: 0,
-        name: "César",
-        subtitle: "Avec un décalage paramétrable",
-        properties : ["Symetric", "Monoalphabetic", "Substitution"],
-        link: "https://www.nymphomath.ch/crypto/cesar/index.html"
-    },
-    {
-        id: 1,
-        name: "Atbash",
-        subtitle: "_",
-        properties : ["Symetric", "Monoalphabetic", "Substitution"],
-        link: "https://fr.wikipedia.org/wiki/Atbash"
-    },
-    {
-        id: 2,
-        name: "Vigenère",
-        subtitle: "_",
-        properties : ["Symetric", "Polyalphabetic", "Substitution"],
-        link: "https://fr.wikipedia.org/wiki/Chiffre_de_Vigen%C3%A8re"
-    },
-    /*
-    {
-        id: 3,
-        name: "Homophone",
-        subtitle: "Avec carré de Polybe",
-        properties : ["Symetric", "Homophonic", "Substitution"],
-        link: "http://www.bibmath.net/crypto/index.php?action=affiche&quoi=ancienne/homophone"
-    },
+  {
+    id: 0,
+    name: "César",
+    subtitle: "Avec un décalage paramétrable",
+    properties: ["Symetric", "Monoalphabetic", "Substitution"],
+    link: "https://www.nymphomath.ch/crypto/cesar/index.html"
+  },
+  {
+    id: 1,
+    name: "Atbash",
+    subtitle: "_",
+    properties: ["Symetric", "Monoalphabetic", "Substitution"],
+    link: "https://fr.wikipedia.org/wiki/Atbash"
+  },
+  {
+    id: 2,
+    name: "Vigenère",
+    subtitle: "_",
+    properties: ["Symetric", "Polyalphabetic", "Substitution"],
+    link: "https://fr.wikipedia.org/wiki/Chiffre_de_Vigen%C3%A8re"
+  },
+  {
+    id: 3,
+    name: "Homophone",
+    subtitle: "Avec carré de Polybe",
+    properties: ["Symetric", "Homophonic", "Substitution"],
+    link:
+      "http://www.bibmath.net/crypto/index.php?action=affiche&quoi=ancienne/homophone"
+  }
+  /*
     {
         id: 4,
         name: "Playfair",
@@ -57,6 +58,6 @@ const data = [
         link: "https://en.wikipedia.org/wiki/Data_Encryption_Standard"
     }
     */
-]
+];
 
 export default data;

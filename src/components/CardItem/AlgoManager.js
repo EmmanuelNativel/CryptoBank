@@ -2,6 +2,7 @@ import React from "react";
 import CesarForm from "./CardForms/CesarForm";
 import AtbashForm from "./CardForms/AtbashForm";
 import VigenereForm from "./CardForms/VigenereForm";
+import HomophoneForm from "./CardForms/HomophoneForm";
 
 export default function AlgoManager({
   data,
@@ -54,9 +55,20 @@ export default function AlgoManager({
             onResult={onResult}
           />
         );
+      case 3:
+        return (
+          <HomophoneForm
+            data={data}
+            keyValue={keyValue}
+            text={text}
+            isDecrypting={isDecrypting}
+            onKeyChange={onKeyChange}
+            onTextChange={onTextChange}
+            onIsDecryptingChange={onIsDecryptingChange}
+            onResult={onResult}
+          />
+        );
       /*
-            case 3:
-              return "Homophone.js";
             case 4:
               return "Playfair.js";
             case 5:
