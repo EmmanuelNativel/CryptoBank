@@ -1,6 +1,7 @@
 import React from "react";
 import CesarForm from "./CardForms/CesarForm";
 import AtbashForm from "./CardForms/AtbashForm";
+import VigenereForm from "./CardForms/VigenereForm";
 
 export default function AlgoManager({
   data,
@@ -29,17 +30,31 @@ export default function AlgoManager({
         );
 
       case 1:
-        return (<AtbashForm
-          data={data}
-          text={text}
-          isDecrypting={isDecrypting}
-          onTextChange={onTextChange}
-          onIsDecryptingChange={onIsDecryptingChange}
-          onResult={onResult}
-        />);
+        return (
+          <AtbashForm
+            data={data}
+            text={text}
+            isDecrypting={isDecrypting}
+            onTextChange={onTextChange}
+            onIsDecryptingChange={onIsDecryptingChange}
+            onResult={onResult}
+          />
+        );
+
+      case 2:
+        return (
+          <VigenereForm
+            data={data}
+            keyValue={keyValue}
+            text={text}
+            isDecrypting={isDecrypting}
+            onKeyChange={onKeyChange}
+            onTextChange={onTextChange}
+            onIsDecryptingChange={onIsDecryptingChange}
+            onResult={onResult}
+          />
+        );
       /*
-            case 2:
-              return "Vigenere.js";
             case 3:
               return "Homophone.js";
             case 4:

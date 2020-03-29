@@ -522,4 +522,4 @@ function getAlphabet() {
     return matrix[0].map((c, i) => matrix.map(row => row[i]));
   }
   
-  export { splitExtASCIIstring, decale, hexaToDecimal, getExtendedAsciiCodeOf, getExtendedAsciiCharOf };
+  export { splitExtASCIIstring, decale, hexaToDecimal, getExtendedAsciiCodeOf, getExtendedAsciiCharOf, indexOf };

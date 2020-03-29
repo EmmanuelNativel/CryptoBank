@@ -13,7 +13,6 @@ const data = [
         properties : ["Symetric", "Monoalphabetic", "Substitution"],
         link: "https://fr.wikipedia.org/wiki/Atbash"
     },
-    /*
     {
         id: 2,
         name: "Vigenère",
@@ -21,6 +20,7 @@ const data = [
         properties : ["Symetric", "Polyalphabetic", "Substitution"],
         link: "https://fr.wikipedia.org/wiki/Chiffre_de_Vigen%C3%A8re"
     },
+    /*
     {
         id: 3,
         name: "Homophone",
