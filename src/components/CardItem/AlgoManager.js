@@ -5,6 +5,7 @@ import VigenereForm from "./CardForms/VigenereForm";
 import HomophoneForm from "./CardForms/HomophoneForm";
 import PlayfairForm from "./CardForms/PlayfairForm";
 import HillForm from "./CardForms/HillForm";
+import TranspoRectForm from "./CardForms/TranspoRectForm";
 
 export default function AlgoManager({
   data,
@@ -96,9 +97,20 @@ export default function AlgoManager({
             onResult={onResult}
           />
         );
+      case 6:
+        return (
+          <TranspoRectForm
+            data={data}
+            keyValue={keyValue}
+            text={text}
+            isDecrypting={isDecrypting}
+            onKeyChange={onKeyChange}
+            onTextChange={onTextChange}
+            onIsDecryptingChange={onIsDecryptingChange}
+            onResult={onResult}
+          />
+        );
       /*
-            case 6:
-              return "TranspoRect.js";
             case 7:
               return "DES.js";
               */

@@ -43,15 +43,16 @@ const data = [
     properties: ["Symetric", "Polygraph", "Substitution"],
     link:
       "http://www.bibmath.net/crypto/index.php?action=affiche&quoi=poly/hill"
+  },
+  {
+    id: 6,
+    name: "Transposition rectangulaire",
+    subtitle: "_",
+    properties: ["Symetric", "Transposition"],
+    link:
+      "http://www.bibmath.net/crypto/index.php?action=affiche&quoi=ancienne/transposition"
   }
   /*
-    {
-        id: 6,
-        name: "Transposition rectangulaire",
-        subtitle: "_",
-        properties : ["Symetric", "Transposition"],
-        link: "http://www.bibmath.net/crypto/index.php?action=affiche&quoi=ancienne/transposition"
-    },
     {
         id: 7,
         name: "DES",

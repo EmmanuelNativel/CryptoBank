@@ -24,10 +24,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function CardResultPanel({
-  text,
-  result
-}) {
+export default function CardResultPanel({ text, result }) {
   const classes = useStyles();
 
   return (
@@ -38,7 +35,7 @@ export default function CardResultPanel({
         className={classes.text}
         align="center"
       >
-      {result ? result : text}
+        {result ? result : text}
       </Typography>
     </CardContent>
   );
