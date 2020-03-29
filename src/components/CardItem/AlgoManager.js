@@ -1,5 +1,6 @@
 import React from "react";
 import CesarForm from "./CardForms/CesarForm";
+import AtbashForm from "./CardForms/AtbashForm";
 
 export default function AlgoManager({
   data,
@@ -26,9 +27,17 @@ export default function AlgoManager({
             onResult={onResult}
           />
         );
+
+      case 1:
+        return (<AtbashForm
+          data={data}
+          text={text}
+          isDecrypting={isDecrypting}
+          onTextChange={onTextChange}
+          onIsDecryptingChange={onIsDecryptingChange}
+          onResult={onResult}
+        />);
       /*
-            case 1:
-              return "Atbash.js";
             case 2:
               return "Vigenere.js";
             case 3:

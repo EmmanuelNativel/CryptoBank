@@ -5,7 +5,7 @@ import headerImg from "./img.jpg";
 
 /**
  * TODO: Rendre la taille du texte adaptif !
- *     : Ajouter un bouton reset ??
+ *     : Ajouter un bouton reset ?? -> Pour actualiser le message (dé)crypté
  */
 
 const useStyles = makeStyles(theme => ({

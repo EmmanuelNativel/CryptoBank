@@ -6,7 +6,6 @@ const data = [
         properties : ["Symetric", "Monoalphabetic", "Substitution"],
         link: "https://www.nymphomath.ch/crypto/cesar/index.html"
     },
-    /*
     {
         id: 1,
         name: "Atbash",
@@ -14,6 +13,7 @@ const data = [
         properties : ["Symetric", "Monoalphabetic", "Substitution"],
         link: "https://fr.wikipedia.org/wiki/Atbash"
     },
+    /*
     {
         id: 2,
         name: "Vigenère",
