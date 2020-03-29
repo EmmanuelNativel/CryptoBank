@@ -27,15 +27,16 @@ const data = [
     properties: ["Symetric", "Homophonic", "Substitution"],
     link:
       "http://www.bibmath.net/crypto/index.php?action=affiche&quoi=ancienne/homophone"
+  },
+  {
+    id: 4,
+    name: "Playfair",
+    subtitle: "_",
+    properties: ["Symetric", "Polygraph", "Substitution"],
+    link:
+      "http://www.bibmath.net/crypto/index.php?action=affiche&quoi=ancienne/playfair"
   }
   /*
-    {
-        id: 4,
-        name: "Playfair",
-        subtitle: "_",
-        properties : ["Symetric", "Polygraph", "Substitution"],
-        link: "http://www.bibmath.net/crypto/index.php?action=affiche&quoi=ancienne/playfair"
-    },
     {
         id: 5,
         name: "Hill",

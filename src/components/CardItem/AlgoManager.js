@@ -3,6 +3,7 @@ import CesarForm from "./CardForms/CesarForm";
 import AtbashForm from "./CardForms/AtbashForm";
 import VigenereForm from "./CardForms/VigenereForm";
 import HomophoneForm from "./CardForms/HomophoneForm";
+import PlayfairForm from "./CardForms/PlayfairForm";
 
 export default function AlgoManager({
   data,
@@ -68,9 +69,20 @@ export default function AlgoManager({
             onResult={onResult}
           />
         );
+      case 4:
+        return (
+          <PlayfairForm
+            data={data}
+            keyValue={keyValue}
+            text={text}
+            isDecrypting={isDecrypting}
+            onKeyChange={onKeyChange}
+            onTextChange={onTextChange}
+            onIsDecryptingChange={onIsDecryptingChange}
+            onResult={onResult}
+          />
+        );
       /*
-            case 4:
-              return "Playfair.js";
             case 5:
               return "Hill.js";
             case 6:
