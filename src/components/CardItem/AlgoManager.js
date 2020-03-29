@@ -4,6 +4,7 @@ import AtbashForm from "./CardForms/AtbashForm";
 import VigenereForm from "./CardForms/VigenereForm";
 import HomophoneForm from "./CardForms/HomophoneForm";
 import PlayfairForm from "./CardForms/PlayfairForm";
+import HillForm from "./CardForms/HillForm";
 
 export default function AlgoManager({
   data,
@@ -82,9 +83,20 @@ export default function AlgoManager({
             onResult={onResult}
           />
         );
+      case 5:
+        return (
+          <HillForm
+            data={data}
+            keyValue={keyValue}
+            text={text}
+            isDecrypting={isDecrypting}
+            onKeyChange={onKeyChange}
+            onTextChange={onTextChange}
+            onIsDecryptingChange={onIsDecryptingChange}
+            onResult={onResult}
+          />
+        );
       /*
-            case 5:
-              return "Hill.js";
             case 6:
               return "TranspoRect.js";
             case 7:

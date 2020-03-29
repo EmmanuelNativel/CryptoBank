@@ -35,15 +35,16 @@ const data = [
     properties: ["Symetric", "Polygraph", "Substitution"],
     link:
       "http://www.bibmath.net/crypto/index.php?action=affiche&quoi=ancienne/playfair"
+  },
+  {
+    id: 5,
+    name: "Hill",
+    subtitle: "Pour m=2 uniquement",
+    properties: ["Symetric", "Polygraph", "Substitution"],
+    link:
+      "http://www.bibmath.net/crypto/index.php?action=affiche&quoi=poly/hill"
   }
   /*
-    {
-        id: 5,
-        name: "Hill",
-        subtitle: "Pour m=2 uniquement",
-        properties : ["Symetric", "Polygraph", "Substitution"],
-        link: "http://www.bibmath.net/crypto/index.php?action=affiche&quoi=poly/hill"
-    },
     {
         id: 6,
         name: "Transposition rectangulaire",
