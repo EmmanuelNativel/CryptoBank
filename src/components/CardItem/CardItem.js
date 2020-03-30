@@ -49,7 +49,6 @@ export default function CardItem({ data }) {
     setIsDecrypting(e.target.checked);
   };
   const handleResult = val => {
-    console.log("HANDLE RESULT", val);
     setResult(val);
   }
 

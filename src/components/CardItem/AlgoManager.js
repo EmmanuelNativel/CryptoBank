@@ -6,6 +6,7 @@ import HomophoneForm from "./CardForms/HomophoneForm";
 import PlayfairForm from "./CardForms/PlayfairForm";
 import HillForm from "./CardForms/HillForm";
 import TranspoRectForm from "./CardForms/TranspoRectForm";
+import DESForm from "./CardForms/DESForm";
 
 export default function AlgoManager({
   data,
@@ -110,10 +111,19 @@ export default function AlgoManager({
             onResult={onResult}
           />
         );
-      /*
-            case 7:
-              return "DES.js";
-              */
+      case 7:
+        return (
+          <DESForm
+            data={data}
+            keyValue={keyValue}
+            text={text}
+            isDecrypting={isDecrypting}
+            onKeyChange={onKeyChange}
+            onTextChange={onTextChange}
+            onIsDecryptingChange={onIsDecryptingChange}
+            onResult={onResult}
+          />
+        );
       default:
         break;
     }

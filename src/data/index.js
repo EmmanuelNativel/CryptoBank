@@ -51,16 +51,14 @@ const data = [
     properties: ["Symetric", "Transposition"],
     link:
       "http://www.bibmath.net/crypto/index.php?action=affiche&quoi=ancienne/transposition"
+  },
+  {
+    id: 7,
+    name: "DES",
+    subtitle: "Data Encryption Standard",
+    properties: ["Symetric", "Super-encryption"],
+    link: "https://en.wikipedia.org/wiki/Data_Encryption_Standard"
   }
-  /*
-    {
-        id: 7,
-        name: "DES",
-        subtitle : "Data Encryption Standard",
-        properties : ["Symetric", "Super-encryption"],
-        link: "https://en.wikipedia.org/wiki/Data_Encryption_Standard"
-    }
-    */
 ];
 
 export default data;
