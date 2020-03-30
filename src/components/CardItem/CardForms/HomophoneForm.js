@@ -36,13 +36,23 @@ export default function HomophoneForm({ data, text, onTextChange, onResult }) {
   const classes = useStyles();
   const [key, setKey] = useState("");
   const [isDecrypting, setIsDecrypting] = useState(false);
+  const [error, setError] = useState({ statut: false, text: "" });
 
   const handleAction = e => {
     const validKey = isKeyValid(key);
     if (validKey) {
       const result = isDecrypting ? decrypt(text, key) : encrypt(text, key);
       onResult(result);
-    } else console.log("KEY INVALID");
+    }
+  };
+
+  const handleKeyChange = e => {
+    const value = e.target.value;
+    setKey(value);
+    const isValid = isKeyValid(value);
+    isValid
+      ? setError({ statut: false, text: "" })
+      : setError({ statut: true, text: "Invalid key" });
   };
 
   return (
@@ -66,7 +76,9 @@ export default function HomophoneForm({ data, text, onTextChange, onResult }) {
             color="primary"
             size="small"
             value={key}
-            onChange={e => setKey(e.target.value)}
+            onChange={handleKeyChange}
+            error={error.statut}
+            helperText={error.text}
           />
         </Grid>
         <Grid item>
@@ -90,6 +102,7 @@ export default function HomophoneForm({ data, text, onTextChange, onResult }) {
               color="secondary"
               variant="contained"
               onClick={handleAction}
+              disabled={error.statut}
             >
               {isDecrypting ? "Decrypt" : "Encrypt"}
             </Button>

@@ -35,33 +35,43 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+/**
+ * TODO: ENLEVER LES \x00 \x00 dans le message décrypté
+ */
+
 export default function DESForm({ data, text, onTextChange, onResult }) {
   const classes = useStyles();
   const [key, setKey] = useState("");
   const [isDecrypting, setIsDecrypting] = useState(false);
   const [isKeyBinary, setIsKeyBinary] = useState(false);
+  const [error, setError] = useState({statut: false, text: ""});
 
   const handleAction = e => {
     const KEY = isKeyBinary ? key : getKeyFromHexa(key);
     console.log("BINARY KEY =", KEY);
     const isValid = isKeyCorrect(KEY);
     if (isValid) {
+      setError({error: false, text: ""})
       const keysArray = getKeys(KEY);
       if (isDecrypting) {
-        // Si le texte est en héxa on le traduit en binaire -> à faire dans la fct DES (ajout d'un bool)
-        // Sinon on lance l'algo sur le texte en clair
         const decryptKeysArray = keysArray.reverse();
-        //const decryptedMessage = DES(readBinaryText(text), decryptKeysArray);
         const decryptedMessage = DES(text, decryptKeysArray);
         onResult(readBinaryText(decryptedMessage));
       } else {
-        // Si le texte est en héxa on le traduit en binaire -> à faire dans la fct DES (ajout d'un bool)
-        // Sinon on lance l'algo sur le texte en clair
+        setError({error: true, text: "Invalid key"})
         const cryptedMessage = DES(text, keysArray);
         onResult(readBinaryText(cryptedMessage));
       }
     }
   };
+
+  const handleKeyChange = e => {
+    const value = e.target.value;
+    setKey(value);
+    const k = isKeyBinary ? value : getKeyFromHexa(value);
+    const isValid = isKeyCorrect(k);
+    isValid ? setError({statut: false, text:""}) : setError({statut: true, text:"Invalid key"});
+  }
 
   return (
     <form className={classes.root}>
@@ -86,7 +96,9 @@ export default function DESForm({ data, text, onTextChange, onResult }) {
               color="primary"
               size="small"
               value={key}
-              onChange={e => setKey(e.target.value)}
+              onChange={handleKeyChange}
+              error={error.statut}
+              helperText={error.text}
             />
           </Grid>
           <Grid item xs={3} align="right">
@@ -125,6 +137,7 @@ export default function DESForm({ data, text, onTextChange, onResult }) {
               color="secondary"
               variant="contained"
               onClick={handleAction}
+              disabled={error.statut}
             >
               {isDecrypting ? "Decrypt" : "Encrypt"}
             </Button>
