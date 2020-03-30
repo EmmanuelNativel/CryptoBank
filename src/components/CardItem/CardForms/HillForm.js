@@ -32,19 +32,13 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function HillForm({
-  data,
-  text,
-  isDecrypting,
-  onTextChange,
-  onIsDecryptingChange,
-  onResult
-}) {
+export default function HillForm({ data, text, onTextChange, onResult }) {
   const classes = useStyles();
   const [A, setA] = useState(0);
   const [B, setB] = useState(0);
   const [C, setC] = useState(0);
   const [D, setD] = useState(0);
+  const [isDecrypting, setIsDecrypting] = useState(false);
 
   const handleAction = e => {
     const determinant = getDeterminant(A, B, C, D);
@@ -66,7 +60,7 @@ export default function HillForm({
           <Switch
             color="default"
             checked={isDecrypting}
-            onChange={onIsDecryptingChange}
+            onChange={e => setIsDecrypting(e.target.checked)}
           />
           <FormLabel style={{ color: "black" }}>Decrypt</FormLabel>
         </Grid>

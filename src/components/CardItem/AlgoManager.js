@@ -8,28 +8,15 @@ import HillForm from "./CardForms/HillForm";
 import TranspoRectForm from "./CardForms/TranspoRectForm";
 import DESForm from "./CardForms/DESForm";
 
-export default function AlgoManager({
-  data,
-  keyValue,
-  text,
-  isDecrypting,
-  onKeyChange,
-  onTextChange,
-  onIsDecryptingChange,
-  onResult
-}) {
+export default function AlgoManager({ data, text, onTextChange, onResult }) {
   const getAlgo = id => {
     switch (id) {
       case 0:
         return (
           <CesarForm
             data={data}
-            keyValue={keyValue}
             text={text}
-            isDecrypting={isDecrypting}
-            onKeyChange={onKeyChange}
             onTextChange={onTextChange}
-            onIsDecryptingChange={onIsDecryptingChange}
             onResult={onResult}
           />
         );
@@ -39,9 +26,7 @@ export default function AlgoManager({
           <AtbashForm
             data={data}
             text={text}
-            isDecrypting={isDecrypting}
             onTextChange={onTextChange}
-            onIsDecryptingChange={onIsDecryptingChange}
             onResult={onResult}
           />
         );
@@ -50,12 +35,8 @@ export default function AlgoManager({
         return (
           <VigenereForm
             data={data}
-            keyValue={keyValue}
             text={text}
-            isDecrypting={isDecrypting}
-            onKeyChange={onKeyChange}
             onTextChange={onTextChange}
-            onIsDecryptingChange={onIsDecryptingChange}
             onResult={onResult}
           />
         );
@@ -63,12 +44,8 @@ export default function AlgoManager({
         return (
           <HomophoneForm
             data={data}
-            keyValue={keyValue}
             text={text}
-            isDecrypting={isDecrypting}
-            onKeyChange={onKeyChange}
             onTextChange={onTextChange}
-            onIsDecryptingChange={onIsDecryptingChange}
             onResult={onResult}
           />
         );
@@ -76,12 +53,8 @@ export default function AlgoManager({
         return (
           <PlayfairForm
             data={data}
-            keyValue={keyValue}
             text={text}
-            isDecrypting={isDecrypting}
-            onKeyChange={onKeyChange}
             onTextChange={onTextChange}
-            onIsDecryptingChange={onIsDecryptingChange}
             onResult={onResult}
           />
         );
@@ -89,12 +62,8 @@ export default function AlgoManager({
         return (
           <HillForm
             data={data}
-            keyValue={keyValue}
             text={text}
-            isDecrypting={isDecrypting}
-            onKeyChange={onKeyChange}
             onTextChange={onTextChange}
-            onIsDecryptingChange={onIsDecryptingChange}
             onResult={onResult}
           />
         );
@@ -102,12 +71,8 @@ export default function AlgoManager({
         return (
           <TranspoRectForm
             data={data}
-            keyValue={keyValue}
             text={text}
-            isDecrypting={isDecrypting}
-            onKeyChange={onKeyChange}
             onTextChange={onTextChange}
-            onIsDecryptingChange={onIsDecryptingChange}
             onResult={onResult}
           />
         );
@@ -115,12 +80,8 @@ export default function AlgoManager({
         return (
           <DESForm
             data={data}
-            keyValue={keyValue}
             text={text}
-            isDecrypting={isDecrypting}
-            onKeyChange={onKeyChange}
             onTextChange={onTextChange}
-            onIsDecryptingChange={onIsDecryptingChange}
             onResult={onResult}
           />
         );

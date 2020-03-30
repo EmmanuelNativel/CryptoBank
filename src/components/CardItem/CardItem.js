@@ -34,23 +34,16 @@ export default function CardItem({ data }) {
     color: "secondary"
   };
 
-  const [key, setKey] = useState("");
-  const [isDecrypting, setIsDecrypting] = useState(false);
   const [text, setText] = useState("");
   const [result, setResult] = useState("");
 
-  const handleKeyChange = e => {
-    setKey(e.target.value);
-  };
   const handleTextChange = e => {
     setText(e.target.value);
   };
-  const handleIsDecryptingChange = e => {
-    setIsDecrypting(e.target.checked);
-  };
+
   const handleResult = val => {
     setResult(val);
-  }
+  };
 
   return (
     <Card className={classes.card}>
@@ -59,7 +52,7 @@ export default function CardItem({ data }) {
         subheader={data.subtitle}
         titleTypographyProps={titleTypoProps}
       />
-      <CardResultPanel text={text} result={result}/>
+      <CardResultPanel text={text} result={result} />
       <CardActions className={classes.properties}>
         <Grid container spacing={1}>
           {data.properties.map(p => (
@@ -79,31 +72,10 @@ export default function CardItem({ data }) {
         </Grid>
       </CardActions>
       <CardContent>
-        {/*
-        Mettre un controlleur qui attribura le bon composant (formulaire en fonction de l'id). 
-        --> Un switch qui renvoi un composant avec passage des props. 
-        --> Le Cryptage/Décryptage se fera dans le composant formulaire directement, 
-        ce qui va permettre de gérer le type des données entrées et de personnaliser le 
-        formulaire en fonction de l'algorithme traité.  
-       
-        <CardForm
-          data={data}
-          keyValue={key}
-          text={text}
-          isDecrypting={isDecrypting}
-          onKeyChange={handleKeyChange}
-          onTextChange={handleTextChange}
-          onIsDecryptingChange={handleIsDecryptingChange}
-        />
-         */}
         <AlgoManager
           data={data}
-          keyValue={key}
           text={text}
-          isDecrypting={isDecrypting}
-          onKeyChange={handleKeyChange}
           onTextChange={handleTextChange}
-          onIsDecryptingChange={handleIsDecryptingChange}
           onResult={handleResult}
         />
       </CardContent>

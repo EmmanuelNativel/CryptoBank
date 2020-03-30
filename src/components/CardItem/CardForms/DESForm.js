@@ -35,22 +35,14 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function DESForm({
-  data,
-  keyValue,
-  text,
-  isDecrypting,
-  onKeyChange,
-  onTextChange,
-  onIsDecryptingChange,
-  onResult
-}) {
+export default function DESForm({ data, text, onTextChange, onResult }) {
   const classes = useStyles();
-
+  const [key, setKey] = useState("");
+  const [isDecrypting, setIsDecrypting] = useState(false);
   const [isKeyBinary, setIsKeyBinary] = useState(false);
 
   const handleAction = e => {
-    const KEY = isKeyBinary ? keyValue : getKeyFromHexa(keyValue);
+    const KEY = isKeyBinary ? key : getKeyFromHexa(key);
     console.log("BINARY KEY =", KEY);
     const isValid = isKeyCorrect(KEY);
     if (isValid) {
@@ -79,7 +71,7 @@ export default function DESForm({
           <Switch
             color="default"
             checked={isDecrypting}
-            onChange={onIsDecryptingChange}
+            onChange={e => setIsDecrypting(e.target.checked)}
           />
           <FormLabel style={{ color: "black" }}>Decrypt</FormLabel>
         </Grid>
@@ -93,8 +85,8 @@ export default function DESForm({
               required
               color="primary"
               size="small"
-              value={keyValue}
-              onChange={onKeyChange}
+              value={key}
+              onChange={e => setKey(e.target.value)}
             />
           </Grid>
           <Grid item xs={3} align="right">

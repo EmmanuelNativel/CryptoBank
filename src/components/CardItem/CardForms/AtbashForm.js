@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import {
   TextField,
@@ -27,15 +27,9 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function AtbashForm({
-  data,
-  text,
-  isDecrypting,
-  onTextChange,
-  onIsDecryptingChange,
-  onResult
-}) {
+export default function AtbashForm({ data, text, onTextChange, onResult }) {
   const classes = useStyles();
+  const [isDecrypting, setIsDecrypting] = useState(false);
 
   const handleAction = e => {
     const result = atBash(text);
@@ -50,7 +44,7 @@ export default function AtbashForm({
           <Switch
             color="default"
             checked={isDecrypting}
-            onChange={onIsDecryptingChange}
+            onChange={e => setIsDecrypting(e.target.checked)}
           />
           <FormLabel style={{ color: "black" }}>Decrypt</FormLabel>
         </Grid>

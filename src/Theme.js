@@ -48,6 +48,11 @@ const theme = createMuiTheme({
       fontFamily: "Helvetica Neue",
       fontSize: "1.5rem",
       fontWeight: 300
+    }, 
+    body2: {
+      fontFamily: "Helvetica Neue",
+      fontSize: "1rem",
+      fontWeight: 100
     }
   }
 });

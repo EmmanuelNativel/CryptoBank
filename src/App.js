@@ -7,6 +7,7 @@ import "./App.css";
 import AppBar from "./components/AppBar/AppBar";
 import Banner from "./components/Banner/Banner";
 import CardsCollection from "./components/CardsCollection/CardsCollection";
+import Footer from "./components/Footer/Footer";
 
 import backgroundImg from "./background.jpg";
 
@@ -28,6 +29,7 @@ function App() {
         <AppBar />
         <Banner />
         <CardsCollection />
+        <Footer />
       </div>
     </ThemeProvider>
   );

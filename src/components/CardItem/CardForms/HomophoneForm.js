@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import {
   TextField,
@@ -13,7 +13,7 @@ import { isKeyValid, encrypt, decrypt } from "./../../../scripts/Homophone";
 
 /**
  * TODO: Gestion des erreurs de clé avec isKeyValid
- *     : Problème décryptage 
+ *     : Problème décryptage
  */
 
 const useStyles = makeStyles(theme => ({
@@ -32,22 +32,13 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function HomophoneForm({
-  data,
-  keyValue,
-  text,
-  isDecrypting,
-  onKeyChange,
-  onTextChange,
-  onIsDecryptingChange,
-  onResult
-}) {
+export default function HomophoneForm({ data, text, onTextChange, onResult }) {
   const classes = useStyles();
+  const [key, setKey] = useState("");
+  const [isDecrypting, setIsDecrypting] = useState(false);
 
   const handleAction = e => {
-    const result = isDecrypting
-      ? decrypt(text, keyValue)
-      : encrypt(text, keyValue);
+    const result = isDecrypting ? decrypt(text, key) : encrypt(text, key);
     onResult(result);
   };
 
@@ -59,7 +50,7 @@ export default function HomophoneForm({
           <Switch
             color="default"
             checked={isDecrypting}
-            onChange={onIsDecryptingChange}
+            onChange={e => setIsDecrypting(e.target.value)}
           />
           <FormLabel style={{ color: "black" }}>Decrypt</FormLabel>
         </Grid>
@@ -71,8 +62,8 @@ export default function HomophoneForm({
             required
             color="primary"
             size="small"
-            value={keyValue}
-            onChange={onKeyChange}
+            value={key}
+            onChange={e => setKey(e.target.value)}
           />
         </Grid>
         <Grid item>

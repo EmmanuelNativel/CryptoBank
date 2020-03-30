@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import {
   TextField,
@@ -9,7 +9,7 @@ import {
   Button
 } from "@material-ui/core";
 
-import { cesar } from "./../../../scripts/Cesar";
+import { cesar } from "../../../scripts/Cesar";
 
 /**
  * TODO: Enlever le switch ?
@@ -31,20 +31,14 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function CesarForm({
-  data,
-  keyValue,
-  text,
-  isDecrypting,
-  onKeyChange,
-  onTextChange,
-  onIsDecryptingChange,
-  onResult
-}) {
+export default function CesarForm({ data, text, onTextChange, onResult }) {
   const classes = useStyles();
 
+  const [key, setKey] = useState("");
+  const [isDecrypting, setIsDecrypting] = useState(false);
+
   const handleAction = e => {
-    const result = cesar(text, parseInt(keyValue));
+    const result = cesar(text, parseInt(key));
     onResult(result);
   };
 
@@ -56,7 +50,7 @@ export default function CesarForm({
           <Switch
             color="default"
             checked={isDecrypting}
-            onChange={onIsDecryptingChange}
+            onChange={e => setIsDecrypting(e.target.checked)}
           />
           <FormLabel style={{ color: "black" }}>Decrypt</FormLabel>
         </Grid>
@@ -69,8 +63,8 @@ export default function CesarForm({
             required
             color="primary"
             size="small"
-            value={keyValue}
-            onChange={onKeyChange}
+            value={key}
+            onChange={e => setKey(e.target.value)}
           />
         </Grid>
         <Grid item>

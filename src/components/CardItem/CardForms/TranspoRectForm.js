@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import {
   TextField,
@@ -29,20 +29,16 @@ const useStyles = makeStyles(theme => ({
 
 export default function TranspoRectForm({
   data,
-  keyValue,
   text,
-  isDecrypting,
-  onKeyChange,
   onTextChange,
-  onIsDecryptingChange,
   onResult
 }) {
   const classes = useStyles();
+  const [key, setKey] = useState("");
+  const [isDecrypting, setIsDecrypting] = useState(false);
 
   const handleAction = e => {
-    const result = isDecrypting
-      ? decrypt(text, keyValue)
-      : encrypt(text, keyValue);
+    const result = isDecrypting ? decrypt(text, key) : encrypt(text, key);
     onResult(result);
   };
 
@@ -54,7 +50,7 @@ export default function TranspoRectForm({
           <Switch
             color="default"
             checked={isDecrypting}
-            onChange={onIsDecryptingChange}
+            onChange={e => setIsDecrypting(e.target.checked)}
           />
           <FormLabel style={{ color: "black" }}>Decrypt</FormLabel>
         </Grid>
@@ -66,8 +62,8 @@ export default function TranspoRectForm({
             required
             color="primary"
             size="small"
-            value={keyValue}
-            onChange={onKeyChange}
+            value={key}
+            onChange={e => setKey(e.target.value)}
           />
         </Grid>
         <Grid item>
