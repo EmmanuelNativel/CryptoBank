@@ -61,7 +61,7 @@ function getCarrePolybe(key, alphabet) {
  *        : L'alphabet du cryptage
  * Sortie : Une chaine de caractère représentant le message crypté.
  */
-function encrypt(msg, key, alphabet=ALPHABET) {
+function encrypt(msg, key, alphabet = ALPHABET) {
   const preparedMsg = prepareMessage(msg); // Mise en forme du message
   const polybe = getCarrePolybe(key, alphabet); // Création du carré de polybe
   return preparedMsg
@@ -120,13 +120,16 @@ function decryptWord(key, word, alphabet) {
  *        : L'alphabet du cryptage
  * Sortie : Une chaine de caractère représentant le mot décrypté.
  */
-function decrypt(msg, key, alphabet=ALPHABET) {
+function decrypt(msg, key, alphabet = ALPHABET) {
   let currentWord = ""; // Un mot à décrypter
-  let result = ""; // Le message décripté
+  let result = ""; // Le message décrypté
   for (let i = 0; i < msg.length; i++) {
     const char = msg[i];
-    // Si c'est une caratère de l'alphabet, on l'ajoute au mot courant
-    if (alphabet.includes(char)) currentWord += char;
+    // Si c'est un caratère de l'alphabet, on l'ajoute au mot courant
+    if (alphabet.includes(char)) {
+      currentWord += char;
+      if(i === msg.length -1 ) result += decryptWord(key, currentWord, alphabet);
+    }
     // Sinon,
     else {
       result += decryptWord(key, currentWord, alphabet); // On décrypte le mot courant et on l'ajoute au résultat final
@@ -161,5 +164,5 @@ export { isKeyValid, encrypt, decrypt };
 // }
 
 /**
- * TODO : Vérifier si la clé en majuscule fonctionne ? 
+ * TODO : Vérifier si la clé en majuscule fonctionne ?
  */

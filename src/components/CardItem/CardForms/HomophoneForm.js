@@ -38,8 +38,11 @@ export default function HomophoneForm({ data, text, onTextChange, onResult }) {
   const [isDecrypting, setIsDecrypting] = useState(false);
 
   const handleAction = e => {
-    const result = isDecrypting ? decrypt(text, key) : encrypt(text, key);
-    onResult(result);
+    const validKey = isKeyValid(key);
+    if (validKey) {
+      const result = isDecrypting ? decrypt(text, key) : encrypt(text, key);
+      onResult(result);
+    } else console.log("KEY INVALID");
   };
 
   return (
@@ -50,7 +53,7 @@ export default function HomophoneForm({ data, text, onTextChange, onResult }) {
           <Switch
             color="default"
             checked={isDecrypting}
-            onChange={e => setIsDecrypting(e.target.value)}
+            onChange={e => setIsDecrypting(e.target.checked)}
           />
           <FormLabel style={{ color: "black" }}>Decrypt</FormLabel>
         </Grid>
