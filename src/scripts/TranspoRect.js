@@ -1,4 +1,8 @@
-import { listToMatrix, transposeMatrix } from "./utils";
+import {
+  listToMatrix,
+  transposeMatrix,
+  splitExtASCIIstring,
+} from "./utils";
 
 /**
  * Pour chaque caractère de la clé, cette fonction retourne un tableau contenant
@@ -15,7 +19,8 @@ function rankKey(key) {
   const sortedKeyA = key.split("").sort(); // Le tableau trié dans l'ordre alphabétique
   let res = []; // Stockage du résultat
 
-  for (let i = 0; i < keyA.length; i++) { // Parcours de la clé
+  for (let i = 0; i < keyA.length; i++) {
+    // Parcours de la clé
     const char = keyA[i]; // Le caractère courant
     const newIndex = sortedKeyA.indexOf(char); // Le nouvel indice. indexOf() retourne la position dans l'alphabet
     sortedKeyA[newIndex] = "xxxx";
@@ -26,14 +31,17 @@ function rankKey(key) {
 
 /**
  * Fonction permettant de crypter un message grâce à la transposition rectangulaire.
- * Entrée : Le message sous forme de chaine de caractères 
+ * Entrée : Le message sous forme de chaine de caractères
  *        : La clé sous forme de chaine de caractères
  * Sortie : Le message codé sous forme de chaine de caractères.
  */
 function encrypt(msg, key) {
-  const matrix = listToMatrix(msg.split(""), key.length); // On insère le message dans une matrice
+  let split = splitExtASCIIstring(msg); // Split du msg en prenant en compte les caractères hexa
+  split = split.map(c => (c.length > 1 ? "\\" + c : c)); // On rajoute le '\' pour la présentation des nbres hexa
+
+  const matrix = listToMatrix(split, key.length); // On insère le message dans une matrice
   const reversedMatrix = transposeMatrix(matrix); // On transpose la matrice pour avoir les colonnes
-  const ranking = rankKey(key); // On obtient les rang des colonnes 
+  const ranking = rankKey(key); // On obtient les rang des colonnes
 
   // On ajoute la bonne colonne à chacun des rang
   for (let i = 0; i < ranking.length; i++) {
@@ -46,19 +54,18 @@ function encrypt(msg, key) {
   for (let i of ranking.sort()) {
     res += i[2].join("");
   }
-
   return res;
 }
 
-
 /**
  * Fonction permettant de décrypter un message codé grâce à la transposition rectangulaire.
- * Entrée : Le message crypté sous forme de chaine de caractères 
+ * Entrée : Le message crypté sous forme de chaine de caractères
  *        : La clé sous forme de chaine de caractères
  * Sortie : Le message décrypté sous forme de chaine de caractères.
  */
 function decrypt(msg, key) {
-  const messageSplited = msg.split(""); // Le message sous forme de tableau de caractères
+  let messageSplited = splitExtASCIIstring(msg); // Split du msg en prenant en compte les caractères hexa
+  messageSplited = messageSplited.map(c => (c.length > 1 ? "\\" + c : c)); // On rajoute le '\' pour la présentation des nbres hexa
   let matrix = listToMatrix(messageSplited, key.length); // Le message sous forme de matrice de la taille de la clé
   let matrixT = transposeMatrix(matrix); // La transoposée de cette matrice pour obtenir les colonnes
   const ranks = rankKey(key); // Le classement de chaque caractères de la clé dans l'ordre
@@ -95,10 +102,6 @@ function decrypt(msg, key) {
 }
 
 export { encrypt, decrypt };
-
-/**
- * TODO: Etendre à la table ascii
- */
 
 // const MESSAGE = "Je suis en italie avec maria !";
 // const KEY = "BIBMATH";

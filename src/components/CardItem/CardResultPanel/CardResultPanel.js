@@ -20,7 +20,8 @@ const useStyles = makeStyles(theme => ({
   },
   text: {
     margin: "auto",
-    color: "white"
+    color: "white",
+    whiteSpace: "pre-wrap"
   }
 }));
 
