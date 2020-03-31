@@ -51,18 +51,17 @@ export default function DESForm({ data, text, onTextChange, onResult }) {
     console.log("BINARY KEY =", KEY);
     const isValid = isKeyCorrect(KEY);
     if (isValid) {
-      setError({error: false, text: ""})
+      setError({error: false, text: ""});
       const keysArray = getKeys(KEY);
       if (isDecrypting) {
         const decryptKeysArray = keysArray.reverse();
         const decryptedMessage = DES(text, decryptKeysArray);
         onResult(readBinaryText(decryptedMessage));
       } else {
-        setError({error: true, text: "Invalid key"})
         const cryptedMessage = DES(text, keysArray);
         onResult(readBinaryText(cryptedMessage));
       }
-    }
+    } else setError({error: true, text: "Invalid key"});
   };
 
   const handleKeyChange = e => {

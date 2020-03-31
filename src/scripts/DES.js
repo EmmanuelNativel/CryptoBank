@@ -115,6 +115,15 @@ function decalageRotationGauche(number, n) {
  */
 function isKeyCorrect(key) {
   if (key.length === 64) {
+    // Si la clé est composée que de 1 ou que de 0, mis à part les bits de control, elle n'est pas valide (car les permutations ne servent à rien)
+    if (
+      key ===
+        "1111111011111110111111101111111011111110111111101111111011111110" ||
+      key === "0000000100000001000000010000000100000001000000010000000100000001"
+    ) {
+      return false;
+    }
+
     const bytes = splitToNbits(key, 8); // On récupère tous les octets de la clé
 
     return bytes.every(currentByte => {
