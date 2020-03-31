@@ -40,6 +40,11 @@ const theme = createMuiTheme({
       fontSize: "1.5rem",
       fontWeight: 200
     },
+    h5: {
+      fontFamily: "Nunito",
+      fontSize: "0.6rem",
+      fontWeight: 200
+    },
     h6: {
       fontFamily: "Nunito",
       fontSize: "2.5rem"

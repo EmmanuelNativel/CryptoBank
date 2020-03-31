@@ -3,6 +3,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import background from "./banner.jpg";
 
+import ScrollableAnchor from "react-scrollable-anchor";
+
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
@@ -29,8 +31,8 @@ const useStyles = makeStyles(theme => ({
   },
   asideText: {
     textAlign: "left",
-    marginBottom: "20%",
-  },
+    marginBottom: "20%"
+  }
 }));
 
 export default function Banner() {
@@ -38,18 +40,20 @@ export default function Banner() {
 
   return (
     <div className={classes.root}>
-      <div className={classes.container}>
-        <div className={classes.asideBox}>
-          <section className={classes.asideText}>
-            <Typography variant="h2" component="h2" color='secondary'>
-              Online, Symmetric
-            </Typography>
-            <Typography variant="h1" component="h1">
-              Cryptography algorithms
-            </Typography>
-          </section>
+      <ScrollableAnchor id={"start"}>
+        <div className={classes.container}>
+          <div className={classes.asideBox}>
+            <section className={classes.asideText}>
+              <Typography variant="h2" component="h2" color="secondary">
+                Online, Symmetric
+              </Typography>
+              <Typography variant="h1" component="h1">
+                Cryptography algorithms
+              </Typography>
+            </section>
+          </div>
         </div>
-      </div>
+      </ScrollableAnchor>
     </div>
   );
 }
