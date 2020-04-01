@@ -9,7 +9,8 @@ import {
   Button
 } from "@material-ui/core";
 
-import { isKeyValid, encrypt, decrypt } from "./../../../scripts/Homophone";
+// import { encrypt, decrypt } from "./../../../scripts/RSA";
+import res from './../../../scripts/RSA';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -27,27 +28,18 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function HomophoneForm({ data, text, onTextChange, onResult }) {
+export default function TranspoRectForm({
+  data,
+  text,
+  onTextChange,
+  onResult
+}) {
   const classes = useStyles();
   const [key, setKey] = useState("");
   const [isDecrypting, setIsDecrypting] = useState(false);
-  const [error, setError] = useState({ statut: false, text: "" });
 
   const handleAction = e => {
-    const validKey = isKeyValid(key);
-    if (validKey) {
-      const result = isDecrypting ? decrypt(text, key) : encrypt(text, key);
-      onResult(result);
-    }
-  };
-
-  const handleKeyChange = e => {
-    const value = e.target.value;
-    setKey(value);
-    const isValid = isKeyValid(value);
-    isValid || value === ""
-      ? setError({ statut: false, text: "" })
-      : setError({ statut: true, text: "Invalid key" });
+    console.log(res);
   };
 
   return (
@@ -71,9 +63,7 @@ export default function HomophoneForm({ data, text, onTextChange, onResult }) {
             color="primary"
             size="small"
             value={key}
-            onChange={handleKeyChange}
-            error={error.statut}
-            helperText={error.text}
+            onChange={e => setKey(e.target.value)}
           />
         </Grid>
         <Grid item>
@@ -97,7 +87,6 @@ export default function HomophoneForm({ data, text, onTextChange, onResult }) {
               color="secondary"
               variant="contained"
               onClick={handleAction}
-              disabled={error.statut}
             >
               {isDecrypting ? "Decrypt" : "Encrypt"}
             </Button>

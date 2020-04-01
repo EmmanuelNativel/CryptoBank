@@ -1,27 +1,10 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import {
-  TextField,
-  Switch,
-  FormLabel,
-  Grid,
-  CardActions,
-  Button
-} from "@material-ui/core";
+import { TextField, Grid, CardActions, Button } from "@material-ui/core";
 
 import { cesar } from "../../../scripts/Cesar";
 
-/**
- * TODO: Enlever le switch ?
- */
-
 const useStyles = makeStyles(theme => ({
-  root: {
-    overflow: "hidden"
-  },
-  centered: {
-    textAlign: "center"
-  },
   blueButton: {
     backgroundColor: theme.palette.primary.light,
     color: "white",
@@ -35,41 +18,48 @@ export default function CesarForm({ data, text, onTextChange, onResult }) {
   const classes = useStyles();
 
   const [key, setKey] = useState("");
-  const [isDecrypting, setIsDecrypting] = useState(false);
+  const [error, setError] = useState({ statut: false, text: "" });
 
   const handleAction = e => {
-    const result = cesar(text, parseInt(key));
-    onResult(result);
+    const keyValue = parseInt(key, 10);
+    if (isNaN(keyValue)) {
+      setError({ statut: true, text: "Key is not a number" });
+    } else {
+      setError({ statut: false, text: "" });
+      const result = cesar(text, keyValue);
+      onResult(result);
+    }
+  };
+
+  const handleKeyChange = e => {
+    const value = e.target.value;
+    setKey(value);
+    isNaN(parseInt(value, 10)) || value === ""
+      ? setError({ statut: true, text: "Key is not a number" })
+      : setError({ statut: false, text: "" });
   };
 
   return (
-    <form className={classes.root}>
+    <form>
       <Grid container direction="column" spacing={1}>
-        <Grid item className={classes.centered}>
-          <FormLabel style={{ color: "black" }}>Encrypt</FormLabel>
-          <Switch
-            color="default"
-            checked={isDecrypting}
-            onChange={e => setIsDecrypting(e.target.checked)}
-          />
-          <FormLabel style={{ color: "black" }}>Decrypt</FormLabel>
-        </Grid>
         <Grid item>
           <TextField
             type="number"
-            label="Key"
+            label="Key (Number)"
             variant="outlined"
             fullWidth
             required
             color="primary"
             size="small"
             value={key}
-            onChange={e => setKey(e.target.value)}
+            onChange={handleKeyChange}
+            error={error.statut}
+            helperText={error.text}
           />
         </Grid>
         <Grid item>
           <TextField
-            label={isDecrypting ? "Text to decrypt" : "Text to encrypt"}
+            label="Write yout text here"
             multiline
             rows="6"
             variant="outlined"
@@ -88,8 +78,9 @@ export default function CesarForm({ data, text, onTextChange, onResult }) {
               color="secondary"
               variant="contained"
               onClick={handleAction}
+              disabled={error.statut}
             >
-              {isDecrypting ? "Decrypt" : "Encrypt"}
+              Start
             </Button>
             <Button
               size="small"

@@ -7,6 +7,7 @@ import PlayfairForm from "./CardForms/PlayfairForm";
 import HillForm from "./CardForms/HillForm";
 import TranspoRectForm from "./CardForms/TranspoRectForm";
 import DESForm from "./CardForms/DESForm";
+import RSAForm from "./CardForms/RSAForm";
 
 export default function AlgoManager({ data, text, onTextChange, onResult }) {
   const getAlgo = id => {
@@ -79,6 +80,15 @@ export default function AlgoManager({ data, text, onTextChange, onResult }) {
       case 7:
         return (
           <DESForm
+            data={data}
+            text={text}
+            onTextChange={onTextChange}
+            onResult={onResult}
+          />
+        );
+      case 8:
+        return (
+          <RSAForm
             data={data}
             text={text}
             onTextChange={onTextChange}

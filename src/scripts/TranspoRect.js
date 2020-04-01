@@ -43,16 +43,22 @@ function encrypt(msg, key) {
   const reversedMatrix = transposeMatrix(matrix); // On transpose la matrice pour avoir les colonnes
   const ranking = rankKey(key); // On obtient les rang des colonnes
 
+  console.log("matrix", matrix);
+  console.log("reversedMatrix", reversedMatrix);
+  console.log("ranking", ranking);
+
   // On ajoute la bonne colonne à chacun des rang
   for (let i = 0; i < ranking.length; i++) {
     ranking[i].push(reversedMatrix[i]);
   }
 
+  console.log("ranking after adding col", ranking);
+
   let res = "";
 
   // On trie les colonnes par le rang et on tranforme les colonnes en chaine de caractères pour obtenir le msg codé
   for (let i of ranking.sort()) {
-    res += i[2].join("");
+    if(i[2]) res += i[2].join("");
   }
   return res;
 }
@@ -88,7 +94,7 @@ function decrypt(msg, key) {
     for (let i = 0; i < ranks.length; i++) {
       if (ranks[i][0] === currentRank) {
         // On recherche le numéro de colonne qui doit être rempli au rang courant
-        matrix[i] = messageSplited.splice(0, matrix[i].length); // On remplie la ligne avec les premiers caractères du message codé
+       if(matrix[i]) matrix[i] = messageSplited.splice(0, matrix[i].length); // On remplie la ligne avec les premiers caractères du message codé
         currentRank++; // On passe au rang suivant
         break; // On stop la boucle for
       } else continue;

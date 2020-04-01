@@ -77,7 +77,7 @@ export default function HillForm({ data, text, onTextChange, onResult }) {
   const handleKeyChange = (A, B, C, D) => {
     const determinant = getDeterminant(A, B, C, D);
     const isValid = isMAtrixValid(determinant);
-    isValid
+    isValid || (A === "" && B === "" && C === "" && D === "")
       ? setError({ statut: false, text: "" })
       : setError({ statut: true, text: `${determinant} is a wrong determinant !` });
   };
