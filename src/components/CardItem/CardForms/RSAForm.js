@@ -49,7 +49,7 @@ export default function TranspoRectForm({
   onResult,
 }) {
   const classes = useStyles();
-  const [formState, setFormState] = useState(MAIN);
+  const [formState, setFormState] = useState(DEFAULT);
   const [keys, setKeys] = useState({ public: [], private: [] });
   const [isDecrypting, setIsDecrypting] = useState(false);
   const [p, setP] = useState(0);
