@@ -17,7 +17,7 @@ import {
   decrypt,
   test,
   getRandomPrimeNumber,
-} from "./../../../scripts/RSA";
+} from "../../../scripts/RSA";
 
 const DEFAULT = 0;
 const KEY_GENERATION = 1;
