@@ -45,7 +45,7 @@ export default function Banner() {
           <div className={classes.asideBox}>
             <section className={classes.asideText}>
               <Typography variant="h2" component="h2" color="secondary">
-                Online, Symmetric
+                Online implementation of
               </Typography>
               <Typography variant="h1" component="h1">
                 Cryptography algorithms

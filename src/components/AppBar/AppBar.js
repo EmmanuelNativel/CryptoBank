@@ -179,14 +179,13 @@ export default function SearchAppBar({ onResearching }) {
                 inputProps={{ "aria-label": "search" }}
                 value={searchText}
                 onChange={handleResearching}
-                helperText="Incorrect entry."
                 onBlur={e => setCountClass(classes.avatar1)}
                 onKeyPress={handleKeyPress}
               />
             </div>
 
             <Grid
-              direction="column"
+              //direction="column"
               style={{ marginLeft: "20px", marginTop: "15px" }}
             >
               <Grid item style={{ marginBottom: "2px" }}>

@@ -85,7 +85,7 @@ function inverseMod256(a) {
   return x + 256;
 }
 
-//console.log("inverse du déterminant -> ", inverseMod26(11));
+//console.log("inverse du déterminant -> ", inverseMod256(11));
 
 /* ====================================================================================== */
 
