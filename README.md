@@ -7,6 +7,10 @@ Attention, le type BigInt de Javascript nécessaire pour traiter les valeurs ret
 
 Après avoir cloner le projet, veuillez suivre les étapes suivantes :
 
+## Étape 0 : Les prérequis
+
+Pour lancer l'application, vous devez avoir **node** et **npm** installés sur votre machine. Pour vérifier que ces modules sont installés, utilisez les commandes `node -v` et `npm -v`.
+
 ## ÉTAPE 1 : Installation des dépendances
 
 Placez vous à la racine du projet et lancez la commande `npm install`.
