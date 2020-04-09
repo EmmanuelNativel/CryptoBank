@@ -43,16 +43,10 @@ function encrypt(msg, key) {
   const reversedMatrix = transposeMatrix(matrix); // On transpose la matrice pour avoir les colonnes
   const ranking = rankKey(key); // On obtient les rang des colonnes
 
-  console.log("matrix", matrix);
-  console.log("reversedMatrix", reversedMatrix);
-  console.log("ranking", ranking);
-
   // On ajoute la bonne colonne à chacun des rang
   for (let i = 0; i < ranking.length; i++) {
     ranking[i].push(reversedMatrix[i]);
   }
-
-  console.log("ranking after adding col", ranking);
 
   let res = "";
 

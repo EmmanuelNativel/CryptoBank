@@ -162,7 +162,3 @@ export { isKeyValid, encrypt, decrypt };
 // } else {
 //   console.log("La clé n'est pas valide.");
 // }
-
-/**
- * TODO : Vérifier si la clé en majuscule fonctionne ?
- */

@@ -14,11 +14,14 @@ const useStyles = makeStyles(theme => ({
     backgroundImage: `url(${background})`,
     backgroundRepeat: "no-repeat",
     backgroundPosition: "left center",
-    backgroundSize: "cover"
+    backgroundSize: "cover",
+    [theme.breakpoints.down("sm")]: {
+      height: "40vh",
+    }
   },
   container: {
     height: "inherit",
-    backgroundColor: "rgba(0,0,0,0.4)"
+    backgroundColor: "rgba(0,0,0,0.4)",
   },
   asideBox: {
     height: "inherit",
@@ -27,7 +30,10 @@ const useStyles = makeStyles(theme => ({
     color: "white",
     display: "flex",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
+    [theme.breakpoints.down("sm")]: {
+      display: 'none'
+    }
   },
   asideText: {
     textAlign: "left",

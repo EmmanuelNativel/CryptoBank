@@ -193,11 +193,11 @@ function getRandomInt(min, max) {
 
 /**
  * Fonction permettant d'obtenir un nombre premier aléatoire parmis les entiers répertoriés dans PRIME_NUMBERS
- * Sortie : Un nombre premier < 3581 sous forme de BigInt
- *        : On choisit en dessous de 3581 afin de pouvoir générer des nombres qui permettent de décrypter le message dans un temps raisonnable.
+ * Sortie : Un nombre premier < 1000 sous forme de BigInt
+ *        : On choisit en dessous de 1000 afin de pouvoir générer des nombres qui permettent de décrypter le message dans un temps raisonnable.
  */
 function getRandomPrimeNumber() {
-  const indice = getRandomInt(0, 500);
+  const indice = getRandomInt(0, 167);
   return PRIME_NUMBERS[indice];
 }
 

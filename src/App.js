@@ -8,25 +8,25 @@ import Banner from "./components/Banner/Banner";
 import CardsCollection from "./components/CardsCollection/CardsCollection";
 import Footer from "./components/Footer/Footer";
 
-import './config';
+import "./config";
 import backgroundImg from "./background.jpg";
 import data from "./data";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   App: {
     backgroundImage: `url(${backgroundImg})`,
     backgroundRepeat: "no-repeat",
     backgroundPosition: "bottom",
     backgroundSize: "cover",
-    margin: 0
-  }
+    margin: 0,
+  },
 }));
 
 function App() {
   const classes = useStyles();
   const [dataCurrent, setDataCurrent] = useState(data);
 
-  const handleResearch = value => {
+  const handleResearch = (value) => {
     setDataCurrent(value);
   };
 
@@ -35,7 +35,7 @@ function App() {
       <div className={classes.App}>
         <AppBar onResearching={handleResearch} />
         <Banner />
-          <CardsCollection data={dataCurrent} />
+        <CardsCollection data={dataCurrent} />
         <Footer />
       </div>
     </ThemeProvider>

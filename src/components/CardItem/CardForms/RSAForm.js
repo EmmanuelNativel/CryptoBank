@@ -285,35 +285,46 @@ export default function TranspoRectForm({
       )}
       <Grid item>
         <CardActions>
-          <Button
-            size="small"
-            color="secondary"
-            variant="contained"
-            onClick={getKeys}
-          >
-            Generate keys
-          </Button>
-          <Button
-            size="small"
-            color="primary"
-            variant="contained"
-            className={classes.whiteTextColor}
-            component="button"
-            onClick={(e) => setFormState(DEFAULT)}
-          >
-            Back
-          </Button>
-          <Button
-            size="small"
-            color="secondary"
-            variant="contained"
-            className={classes.blueButton}
-            component="a"
-            href={data.link}
-            target="_blank"
-          >
-            Learn more
-          </Button>
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <Button
+                size="small"
+                color="secondary"
+                variant="contained"
+                onClick={getKeys}
+                fullWidth
+              >
+                Generate keys
+              </Button>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <Button
+                size="small"
+                color="primary"
+                variant="contained"
+                className={classes.whiteTextColor}
+                component="button"
+                onClick={(e) => setFormState(DEFAULT)}
+                fullWidth
+              >
+                Back
+              </Button>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <Button
+                size="small"
+                color="secondary"
+                variant="contained"
+                className={classes.blueButton}
+                component="a"
+                href={data.link}
+                target="_blank"
+                fullWidth
+              >
+                Learn more
+              </Button>
+            </Grid>
+          </Grid>
         </CardActions>
       </Grid>
     </Grid>
@@ -382,35 +393,46 @@ export default function TranspoRectForm({
       </Grid>
       <Grid item>
         <CardActions>
-          <Button
-            size="small"
-            color="secondary"
-            variant="contained"
-            onClick={handleAction}
-          >
-            {isDecrypting ? "Decrypt" : "Encrypt"}
-          </Button>
-          <Button
-            size="small"
-            color="primary"
-            variant="contained"
-            className={classes.whiteTextColor}
-            component="button"
-            onClick={(e) => setFormState(DEFAULT)}
-          >
-            Back
-          </Button>
-          <Button
-            size="small"
-            color="secondary"
-            variant="contained"
-            className={classes.blueButton}
-            component="a"
-            href={data.link}
-            target="_blank"
-          >
-            Learn more
-          </Button>
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <Button
+                size="small"
+                color="secondary"
+                variant="contained"
+                onClick={handleAction}
+                fullWidth
+              >
+                {isDecrypting ? "Decrypt" : "Encrypt"}
+              </Button>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <Button
+                size="small"
+                color="primary"
+                variant="contained"
+                className={classes.whiteTextColor}
+                component="button"
+                onClick={(e) => setFormState(DEFAULT)}
+                fullWidth
+              >
+                Back
+              </Button>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <Button
+                size="small"
+                color="secondary"
+                variant="contained"
+                className={classes.blueButton}
+                component="a"
+                href={data.link}
+                target="_blank"
+                fullWidth
+              >
+                Learn more
+              </Button>
+            </Grid>
+          </Grid>
         </CardActions>
       </Grid>
     </Grid>

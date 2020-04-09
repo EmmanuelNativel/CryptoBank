@@ -11,8 +11,7 @@ import { splitExtASCIIstring, hexaToDecimal, getExtendedAsciiCodeOf, getExtended
  */
 function atBash(message) {
   const alphaSize = 256; // Taille de la table ASCII étendue
-  //const messageSplit = message.split(""); // Tranformation du message en tableau de caractères
-  const messageSplit = splitExtASCIIstring(message);
+  const messageSplit = splitExtASCIIstring(message); // Tranformation du message en tableau de caractères
 
   const result = messageSplit // Parcours des caractères
     .map(c => {

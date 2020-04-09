@@ -1,7 +1,3 @@
-/**
- * PREREQUIS : Les caractères de la clé doivent être inclus dans l'alphabet.
- */
-
 import { getAlphabet, getNumbers, listToMatrix, transposeMatrix } from "./utils";
 
 const lettres = getAlphabet(); // liste des lettres de l'alphabet
