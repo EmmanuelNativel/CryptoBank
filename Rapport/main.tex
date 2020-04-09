@@ -35,7 +35,7 @@
 
 Dans le cadre de l'UE Sécurité Informatique en M1 informatique, nous devons proposer une implémentation des algorithmes de cryptographie suivants : \textit{Atbash, César, Vigenère, homophone avec carré de Polybe, Playfair, Hill} (cas où m = 2 uniquement), \textit{transposition rectangulaire et DES} pour la catégorie des algorithmes symétriques et \textit{RSA} pour la catégorie des algorithmes asymétriques. 
 Pour se faire, j'ai choisi de développer une application web statique en utilisant le framework Javascript React JS\cite{react}. De plus, certaines de ces implémentations doivent être appliquées à toute la table ASCII étendue.
-Afin de vous présenter au mieux l'application CryptoBank, nous allons dans un premier temps faire une présentation de l'environnement de travail et des procédures d'installation. Puis, nous nous intéresserons aux fonctionnalités ajoutées en dehors de l'implémentation des algorithmes de cryptographie. Ensuite, nous nous concentrerons sur certains algorithmes en particulier. Et enfin, nous exposerons les difficultés rencontrées lors du développement de cette application.
+Afin de vous présenter au mieux l'application CryptoBank, nous allons dans un premier temps faire une présentation de l'environnement de travail et des procédures d'installation. Puis, nous nous intéresserons aux fonctionnalités ajoutées en dehors de l'implémentation des algorithmes de cryptographie. Enfin, nous nous concentrerons sur certains algorithmes en particulier afin de détailler quelques subtilités de l'implémentation proposée.
 
 \section{Environnement de travail et installation}
 \subsection{Quelques mots sur React JS}
@@ -153,7 +153,7 @@ Enfin, pour déchiffrer, il faudra d'abord séparer la suite en blocs de 4 pour 
 Cette méthode est donnée par le tutoriel d'\textit{openclassroom}\cite{openclassroom}.
 
 
-\section{Difficultés et impressions}
+\section{Conclusion}
 
 Je pense que malgré la première impression que donne les algorithmes complexes tels que le DES, Hill ou RSA, ce ne sont pas les plus difficiles à implémenter. En effet, dans mon cas, l'implémentation des algorithmes utilisant un carré de polybe ou des permutations des colonnes d'une matrice, tel que la transposition rectangulaire, était plus délicate. 
 
